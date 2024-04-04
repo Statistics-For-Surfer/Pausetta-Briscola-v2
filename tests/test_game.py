@@ -85,18 +85,18 @@ def test_100_games():
             print("done", done)
             assert (state['my_points'] + state['other_points']) <= 120
             actual_num_cards = state['remaining_deck_cards'] + state['hand_size'] \
-                               + state['other_hand_size'] \
-                               + len([x for x in state['table'] if x != NULLCARD_VECTOR]) \
-                               + len([x for x in state['my_discarded'] if x != NULLCARD_VECTOR]) \
-                               + len([x for x in state['other_discarded'] if x != NULLCARD_VECTOR])
+                                + state['other_hand_size'] \
+                                + len([x for x in state['table'] if x != NULLCARD_VECTOR]) \
+                                + len([x for x in state['my_discarded'] if x != NULLCARD_VECTOR]) \
+                                + len([x for x in state['other_discarded'] if x != NULLCARD_VECTOR])
             assert actual_num_cards == 40, actual_num_cards
 
             ids = set()
             for c in itertools.chain(game.my_player.hand,
-                                     game.other_player.hand,
-                                     game.my_discarded,
-                                     game.other_discarded,
-                                     game.deck.cards):
+                                    game.other_player.hand,
+                                    game.my_discarded,
+                                    game.other_discarded,
+                                    game.deck.cards):
                 assert c.id not in ids
                 ids.add(c.id)
 

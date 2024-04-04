@@ -97,14 +97,14 @@ class BriscolaCustomEnemyPlayer(gym.Env):
 
     def public_state(self):
         return PublicState(self.my_points, self.other_points, self.my_player.hand,
-                           len(self.other_player.hand), len(self.deck.cards),
-                           self.table, self.my_discarded, self.other_discarded,
-                           self.turn, self.briscola, self.turn_my_player)
+                            len(self.other_player.hand), len(self.deck.cards),
+                            self.table, self.my_discarded, self.other_discarded,
+                            self.turn, self.briscola, self.turn_my_player)
 
     def is_finish(self):
         print("Points:" , self.points)
         return any(p > 60 for p in self.points) or \
-               (self.deck.is_empty() and all(len(p.hand) == 0 for p in self.players))
+                (self.deck.is_empty() and all(len(p.hand) == 0 for p in self.players))
 
     def reset(self):
         self.turn = 0
